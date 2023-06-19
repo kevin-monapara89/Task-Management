@@ -38,7 +38,6 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
                 txttime.text = hour
                 txttime.text = minute
 
-
             }
         }
     }

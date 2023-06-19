@@ -1,10 +1,12 @@
 package com.kevin.taskmanagement.Fragment
 
+import android.app.TimePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TimePicker
 import com.kevin.taskmanagement.Database.RoomDB
 import com.kevin.taskmanagement.Enitiy.TaskEnitiy
 import com.kevin.taskmanagement.databinding.FragmentAddTaskBinding
@@ -16,19 +18,16 @@ class AddTaskFragment : Fragment() {
     lateinit var binding: FragmentAddTaskBinding
     lateinit var db: RoomDB
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
        binding = FragmentAddTaskBinding.inflate(layoutInflater)
 
-        return binding.root
-
+        AddData()
         db = RoomDB.init(context)
 
-        AddData()
-
+        return binding.root
     }
 
     private fun AddData() {
@@ -55,11 +54,20 @@ class AddTaskFragment : Fragment() {
 
             binding.txtTime.text = currentTime
             var seleTime = currentTime
+            var dialog1 = TimePickerDialog(context, object : TimePickerDialog.OnTimeSetListener {
+                override fun onTimeSet(p0: TimePicker?, p1: Int, p2: Int) {
 
+                    var hour = p1
+                    var minute = p2
+                    var selectedTime = "$p1:$p2"
+                    binding.txtTime.text = selectedTime
+                }
+
+            }, 10, 0, true)
+            dialog1.show()
         }
 
         binding.btnsubmit.setOnClickListener {
-
 
             var title = binding.edtTask.text.toString()
             var text = binding.edtText.text.toString()
@@ -76,6 +84,5 @@ class AddTaskFragment : Fragment() {
         }
 
     }
-
 
 }
