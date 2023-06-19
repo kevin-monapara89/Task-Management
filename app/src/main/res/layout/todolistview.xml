@@ -12,57 +12,19 @@
         android:layout_height="@dimen/_58sdp"
         android:orientation="horizontal">
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/frmbg"
-            android:layout_width="@dimen/_83sdp"
+            android:layout_width="@dimen/_62sdp"
             android:layout_height="match_parent"
             android:padding="@dimen/_6sdp"
+            android:orientation="vertical"
+            android:gravity="center"
             android:background="#61E527">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/_5sdp"
-                android:layout_gravity="left"
-                app:cardBackgroundColor="@color/white">
-
-                <TextView
-                    android:id="@+id/txtmonth"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="JUN"
-                    android:textColor="#868686"
-                    android:textSize="@dimen/_8sdp"
-                    android:textStyle="bold"
-                    android:gravity="center"/>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/_5sdp"
-                android:layout_gravity="left"
-                android:layout_marginTop="@dimen/_15sdp"
-                app:cardBackgroundColor="@color/white">
-
-                <TextView
-                    android:id="@+id/txtyear"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="2023"
-                    android:textColor="#868686"
-                    android:textSize="@dimen/_8sdp"
-                    android:textStyle="bold"
-                    android:gravity="center"/>
-
-            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
                 app:cardCornerRadius="@dimen/_7sdp"
-                android:layout_marginLeft="@dimen/_45sdp"
                 app:cardBackgroundColor="@color/white">
 
                 <TextView
@@ -79,26 +41,37 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="@dimen/_60sdp"
+                android:layout_width="@dimen/_50sdp"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/_7sdp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/_30sdp"
-                app:cardBackgroundColor="@color/white">
+                app:cardCornerRadius="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:cardBackgroundColor="#C7DDEF">
 
                 <TextView
-                    android:id="@+id/txttime"
+                    android:id="@+id/txtmonth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="08:00 Am"
-                    android:textColor="#2f2f2f"
-                    android:layout_gravity="center"
+                    android:text="JUN"
+                    android:textColor="#868686"
+                    android:textSize="@dimen/_8sdp"
+                    android:paddingLeft="@dimen/_5sdp"
                     android:textStyle="bold"
-                    android:gravity="center"/>
+                    android:gravity="left"/>
+
+                <TextView
+                    android:id="@+id/txtyear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2023"
+                    android:textColor="#868686"
+                    android:textSize="@dimen/_8sdp"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:textStyle="bold"
+                    android:gravity="right"/>
 
             </androidx.cardview.widget.CardView>
 
-        </FrameLayout>
+        </LinearLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -107,10 +80,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/_10sdp"
+            android:padding="@dimen/_6sdp"
             android:orientation="vertical">
 
-        <TextView
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_5sdp"
+                app:cardBackgroundColor="#C7DDEF">
+
+                <TextView
+                    android:id="@+id/txttime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="JUN"
+                    android:textColor="#868686"
+                    android:textSize="@dimen/_8sdp"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/txttitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="fhiuhslk"
@@ -119,6 +112,7 @@
             android:textColor="#191919"/>
 
         <TextView
+            android:id="@+id/txtdiscription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="fhiuhslk"
@@ -129,6 +123,7 @@
         </LinearLayout>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/check"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 app:cardCornerRadius="@dimen/_30sdp"

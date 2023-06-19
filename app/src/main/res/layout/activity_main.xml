@@ -6,5 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".Activity.MainActivity">
 
+    <FrameLayout
+        android:id="@+id/fragpageview"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="match_parent"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        app:menu="@menu/bottam_nav"
+        android:layout_gravity="bottom"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
