@@ -5,16 +5,76 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.kevin.taskmanagement.R
+import com.kevin.taskmanagement.Database.RoomDB
+import com.kevin.taskmanagement.Enitiy.TaskEnitiy
+import com.kevin.taskmanagement.databinding.FragmentAddTaskBinding
+import java.text.SimpleDateFormat
+import java.util.Date
+
 class AddTaskFragment : Fragment() {
+
+    lateinit var binding: FragmentAddTaskBinding
+    lateinit var db: RoomDB
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_task, container, false)
+       binding = FragmentAddTaskBinding.inflate(layoutInflater)
+
+        return binding.root
+
+        db = RoomDB.init(context)
+
+        AddData()
+
+    }
+
+    private fun AddData() {
+
+        binding.txtDate.setOnClickListener {
+
+            var date = Date()
+
+            var format1 = SimpleDateFormat("dd-MM-YYYY")
+            var currentDate = format1.format(date)
+
+            var dates = currentDate.split("-")
+            binding.txtDate.text = currentDate
+
+
+        }
+
+        binding.txtTime.setOnClickListener {
+
+            var date = Date()
+
+            var format2 = SimpleDateFormat("hh:mm a")
+            var currentTime = format2.format(date)
+
+            binding.txtTime.text = currentTime
+            var seleTime = currentTime
+
+        }
+
+        binding.btnsubmit.setOnClickListener {
+
+
+            var title = binding.edtTitle.text.toString()
+            var text = binding.edtText.text.toString()
+            var date = binding.txtDate.text.toString()
+            var month = binding.txtDate.text.toString()
+            var year = binding.txtDate.text.toString()
+            var hour = binding.txtTime.text.toString()
+            var minute = binding.txtTime.text.toString()
+            var format = SimpleDateFormat("DD-MM-YYYY hh:mm")
+            var current = format.format(Date())
+            var data = TaskEnitiy(title ,text, date, month, year, hour, minute)
+            db.task().AddTask(data)
+
+        }
+
     }
 
 

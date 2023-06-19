@@ -12,8 +12,8 @@ import com.kevin.taskmanagement.Enitiy.TaskEnitiy
 abstract class RoomDB : RoomDatabase() {
 
     companion object {
-        fun init(context: Context): RoomDB {
-            var DB = Room.databaseBuilder(context, RoomDB::class.java, "Task.db")
+        fun init(context: Context?): RoomDB {
+            var DB = Room.databaseBuilder(context!!, RoomDB::class.java, "Task.db")
                 .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
                 .build()
