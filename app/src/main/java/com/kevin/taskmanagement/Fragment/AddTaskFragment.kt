@@ -33,7 +33,7 @@ class AddTaskFragment : Fragment() {
 
     private fun AddData() {
 
-        binding.txtDate.setOnClickListener {
+        binding.txtdate.setOnClickListener {
 
             var date = Date()
 
@@ -41,7 +41,7 @@ class AddTaskFragment : Fragment() {
             var currentDate = format1.format(date)
 
             var dates = currentDate.split("-")
-            binding.txtDate.text = currentDate
+            binding.txtdate.text = currentDate
 
 
         }
@@ -61,11 +61,11 @@ class AddTaskFragment : Fragment() {
         binding.btnsubmit.setOnClickListener {
 
 
-            var title = binding.edtTitle.text.toString()
+            var title = binding.edtTask.text.toString()
             var text = binding.edtText.text.toString()
-            var date = binding.txtDate.text.toString()
-            var month = binding.txtDate.text.toString()
-            var year = binding.txtDate.text.toString()
+            var date = binding.txtdate.text.toString()
+            var month = binding.txtdate.text.toString()
+            var year = binding.txtdate.text.toString()
             var hour = binding.txtTime.text.toString()
             var minute = binding.txtTime.text.toString()
             var format = SimpleDateFormat("DD-MM-YYYY hh:mm")
