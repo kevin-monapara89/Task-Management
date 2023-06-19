@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.kevin.taskmanagement.Enitiy.TaskEnitiy
 import com.kevin.taskmanagement.databinding.TodolistviewBinding
 
-class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
+class TaskAdapter(getTask: List<TaskEnitiy>) : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
 
     var Tasklist = ArrayList<TaskEnitiy>()
     lateinit var context : Context
@@ -42,4 +42,7 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
         }
     }
 
+    fun settask(Tasklist: ArrayList<TaskEnitiy>) {
+        this.Tasklist = Tasklist
+    }
 }

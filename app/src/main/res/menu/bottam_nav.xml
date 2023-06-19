@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/Home"
+        android:id="@+id/home"
         android:title="Home"
         android:iconTint="#00d4d4"
         android:icon="@drawable/baseline_home_24"/>
 
     <item
-        android:id="@+id/Add"
+        android:id="@+id/add"
         android:title="AddTask"
         android:iconTint="#00d4d4"
         android:icon="@drawable/baseline_add_24" />
 
     <item
-        android:id="@+id/List"
+        android:id="@+id/list"
         android:title="TaskList"
         android:iconTint="#00d4d4"
         android:icon="@drawable/baseline_list_24"/>
