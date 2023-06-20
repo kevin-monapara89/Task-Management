@@ -72,6 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -80,7 +81,6 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15sdp"/>
-
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -91,7 +91,7 @@
 
 
             <TextView
-                android:id="@+id/txtdate"
+                android:id="@+id/edtdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="12/04/2023"
@@ -125,7 +125,7 @@
             app:cardElevation="5dp">
 
             <TextView
-                android:id="@+id/txtTime"
+                android:id="@+id/edttime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="02:55 pm"

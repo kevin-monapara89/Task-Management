@@ -7,29 +7,28 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.kevin.taskmanagement.Enitiy.TaskEnitiy
 import com.kevin.taskmanagement.databinding.TodolistviewBinding
+import java.util.Date
 
 class TaskAdapter(getTask: List<TaskEnitiy>) : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
 
-    var Tasklist = ArrayList<TaskEnitiy>()
-    lateinit var context : Context
+    var getTask = getTask
 
     class TaskHolder(itemView: TodolistviewBinding) : ViewHolder(itemView.root) {
         var binding = itemView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskHolder {
-        context = parent.context
         var binding = TodolistviewBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return TaskHolder(binding)
     }
 
     override fun getItemCount(): Int {
-        return Tasklist.size
+        return getTask.size
     }
 
     override fun onBindViewHolder(holder: TaskHolder, position: Int) {
         holder.binding.apply {
-            Tasklist.get(position).apply {
+            getTask.get(position).apply {
                 txttitle.text = title
                 txtdiscription.text = discription
                 txtdate.text = date
@@ -42,7 +41,9 @@ class TaskAdapter(getTask: List<TaskEnitiy>) : RecyclerView.Adapter<TaskAdapter.
         }
     }
 
-    fun settask(Tasklist: ArrayList<TaskEnitiy>) {
-        this.Tasklist = Tasklist
+    fun update(notes: List<TaskEnitiy>) {
+        this.getTask = notes as ArrayList<TaskEnitiy>
+        notifyDataSetChanged()
     }
+
 }
