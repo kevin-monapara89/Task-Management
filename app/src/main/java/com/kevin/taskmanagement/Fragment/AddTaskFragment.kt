@@ -98,7 +98,7 @@ class AddTaskFragment : Fragment() {
             var minute = binding.edttime.text.toString()
             var format = SimpleDateFormat("dd-MM-YYYY hh:mm a")
             var current = format.format(Date())
-            var data = TaskEnitiy(title ,text, Date, Month, Year, hour, minute)
+            var data = TaskEnitiy(0,title ,text, Date, Month, Year, hour, minute)
             db.task().AddTask(data)
 
 //            if (title.isEmpty() || text.isEmpty()) {
