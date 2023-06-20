@@ -35,6 +35,8 @@ class TaskAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskHolder {
+        var binding =
+            TodolistviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         var binding =
             TodolistviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -55,8 +57,8 @@ class TaskAdapter(
                 txttitle.text = title
                 txtdiscription.text = discription
                 txtdate.text = date
-                txtmonth.text = month
-                txtyear.text = year
+                txtdate.text = month
+                txtdate.text = year
                 txttime.text = hour
                 txttime.text = minute
 
