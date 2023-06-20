@@ -14,14 +14,15 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(HomeFragment())
         binding.bottom.setOnItemSelectedListener {
             when(it.itemId) {
-                R.id.home -> replaceFragment(HomeFragment())
-                R.id.add -> replaceFragment(AddTaskFragment())
-                R.id.list -> replaceFragment(ListFragment())
+                R.id.Home -> replaceFragment(HomeFragment())
+                R.id.Add -> replaceFragment(AddTaskFragment())
+                R.id.List -> replaceFragment(ListFragment())
 
                 else -> {
 
@@ -29,9 +30,12 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
     }
 
     private fun replaceFragment(fragment: Fragment) {
+
         supportFragmentManager.beginTransaction().replace(R.id.fragpageview,fragment).commit()
+
     }
 }
