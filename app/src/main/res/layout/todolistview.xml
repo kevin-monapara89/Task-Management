@@ -122,23 +122,69 @@
 
             </LinearLayout>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/check"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                app:cardCornerRadius="@dimen/_30sdp"
-                android:layout_gravity="right|center"
-                android:layout_margin="@dimen/_15sdp"
-                app:cardBackgroundColor="@color/white">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="match_parent"
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/check"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_30sdp">
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/checkedcircle"
+                        app:tint="#41DE1E" />
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:src="@drawable/checkedcircle"
-                    app:tint="#41DE1E" />
+                    android:orientation="vertical"
+                    >
 
-            </androidx.cardview.widget.CardView>
+                    <LinearLayout
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_weight="1"
+                        android:background="#E57373"
+                        >
 
+                        <ImageView
+                            android:id="@+id/imgdelete"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:src="@drawable/delete_24" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_weight="1"
+                        android:background="#81C784"
+                        >
+
+                        <ImageView
+                            android:id="@+id/imgubdata"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:src="@drawable/update_24" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
         </FrameLayout>
 
     </LinearLayout>

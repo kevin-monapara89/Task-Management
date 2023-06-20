@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragment.AddTaskFragment">
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Title Task"
-        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginLeft="@dimen/_12sdp"
-        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Title Task"
         android:textColor="@color/black"
-        android:textSize="@dimen/_15sdp"/>
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -35,15 +33,15 @@
 
     </androidx.cardview.widget.CardView>
 
-  <TextView
-        android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Descrption"
-        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginLeft="@dimen/_12sdp"
-        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Descrption"
         android:textColor="@color/black"
-        android:textSize="@dimen/_15sdp"/>
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -66,73 +64,76 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date"
                 android:layout_marginLeft="@dimen/_12sdp"
-                android:textStyle="bold"
+                android:text="Date"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_15sdp"/>
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="5dp">
-
-
-            <TextView
-                android:id="@+id/edtdate"
-                android:layout_width="match_parent"
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12/04/2023"
-                android:padding="10dp"
-                android:textSize="18dp" />
+                android:layout_margin="15dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp">
 
-        </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/edtdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="12/04/2023"
+                    android:textSize="18dp" />
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time"
                 android:layout_marginLeft="@dimen/_12sdp"
-                android:textStyle="bold"
+                android:text="Time"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_15sdp"/>
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold" />
 
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="5dp">
-
-            <TextView
-                android:id="@+id/edttime"
-                android:layout_width="match_parent"
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="02:55 pm"
-                android:padding="10dp"
-                android:textSize="18dp" />
+                android:layout_margin="15dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp">
 
-        </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/edttime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="02:55 pm"
+                    android:textSize="18dp" />
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
@@ -158,7 +159,6 @@
             android:textStyle="bold" />
 
     </androidx.cardview.widget.CardView>
-
 
 
 </LinearLayout>

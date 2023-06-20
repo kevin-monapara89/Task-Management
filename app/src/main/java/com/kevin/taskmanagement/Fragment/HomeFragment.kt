@@ -1,10 +1,10 @@
 package com.kevin.taskmanagement.Fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kevin.taskmanagement.Adapter.TaskAdapter
 import com.kevin.taskmanagement.Database.RoomDB
@@ -21,16 +21,24 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         binding = FragmentHomeBinding.inflate(layoutInflater)
 
         db = RoomDB.init(context)
+
+
+
         initview()
+
         return binding.root
     }
 
+
     private fun initview() {
-        adapter = TaskAdapter(db.task().GetTask())
+        var list = db.task().GetTask()
+        adapter = TaskAdapter(
+            list as ArrayList<TaskEnitiy>
+        )
         binding.rcvtasklist.layoutManager = LinearLayoutManager(context)
         binding.rcvtasklist.adapter = adapter
     }
