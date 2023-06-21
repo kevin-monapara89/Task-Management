@@ -169,6 +169,8 @@ class HomeFragment : Fragment() {
 
                 db.task().UpdateTask(t)
 
+
+
             }
 
             adapter.update(db.task().GetTask())
