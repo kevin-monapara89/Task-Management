@@ -27,6 +27,14 @@ class TaskAdapter(getTask: List<TaskEnitiy>, update: (TaskEnitiy) -> Unit, delet
         class TaskHolder(itemView: TodolistviewBinding) : ViewHolder(itemView.root) {
             var binding = itemView
         }
+    class TaskHolder(itemView: TodolistviewBinding) : ViewHolder(itemView.root) {
+
+        var binding = itemView
+
+
+    }
+
+
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskHolder {
             var binding =
@@ -94,5 +102,13 @@ class TaskAdapter(getTask: List<TaskEnitiy>, update: (TaskEnitiy) -> Unit, delet
             list = l as ArrayList<TaskEnitiy>
             notifyDataSetChanged()
         }
+            }
+        })
+    }
+
+
+    fun update(l: List<TaskEnitiy>) {
+        list = l as ArrayList<TaskEnitiy>
+        notifyDataSetChanged()
     }
 }

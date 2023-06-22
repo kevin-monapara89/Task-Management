@@ -43,9 +43,11 @@ class HomeFragment : Fragment() {
         }
 
         initView()
+        initview()
 
         return binding.root
     }
+    private fun initview() {
 
     private fun initView() {
         adapter = TaskAdapter(db.task().GetTask())
@@ -61,8 +63,10 @@ class HomeFragment : Fragment() {
 
     private fun Delete(it: Int) {
         db.task().DeleteTask(it)
-    }
+        db.task().DeleteTask(it)
+        adapter.update(db.task().GetTask())
 
+    }
     private fun Update(it: TaskEnitiy) {
 
         var dialog = Dialog(requireContext())
@@ -94,14 +98,10 @@ class HomeFragment : Fragment() {
                 }, dates[2].toInt(), dates[1].toInt() - 1, dates[0].toInt())
             dialog.show()
         }
-
         b.edttime.setOnClickListener {
-
             var date = Date()
-
             var format2 = SimpleDateFormat("hh:mm a")
             var currentTime = format2.format(date)
-
             b.edttime.text = currentTime
             var seleTime = currentTime
             var dialog1 = TimePickerDialog(context, object : TimePickerDialog.OnTimeSetListener {
@@ -132,53 +132,26 @@ class HomeFragment : Fragment() {
             var minute = b.edttime.text.toString()
             var format = SimpleDateFormat("dd-MM-YYYY hh:mm a")
             var current = format.format(Date())
-//
-//
-//            var data = TaskEnitiy(title ,text, Date, Month, Year, hour, minute)
-//            val insertedId = db.task().AddTask(data)
-//            data.id = insertedId
-
-            var  task = db.task().GetTask()
-            for (t in task)
-            {
-
-//                var text = b.edtdescription.text.toString()
-//                var title = b.edtTask.text.toString()
-//                var Date = b.edtdate.text.toString()
-//                var Month = b.edtdate.text.toString()
-//                var Year = b.edtdate.text.toString()
-//                var hour = b.edttime.text.toString()
-//                var minute = b.edttime.text.toString()
-//                var format = SimpleDateFormat("dd-MM-YYYY hh:mm a")
-//                var current = format.format(Date())
 
 
-                t.title =title
-                t.discription = text
-                t.hour = hour
-                t.date = Date
-                t.month = Month
-                t.year = Year
-                t.minute = minute
-                t.id
+            var tasks = db.task().GetTask()
+            for (task in tasks) {
+                task.title = title
+                task.discription = text
+                task.hour = hour
+                task.date = Date
+                task.month = Month
+                task.year = Year
+                task.minute = minute
 
 
-
-                var data = TaskEnitiy( title,text,Date,Month,Year,hour,minute)
-
-                db.task().UpdateTask(t)
+                var data = TaskEnitiy(title, text, Date, Month, Year, hour, minute)
 
 
-
+                db.task().UpdateTask(task)
             }
 
             adapter.update(db.task().GetTask())
-
-
-
-//            db.task().UpdateTask(data)
-//            adapter.update(db.task().GetTask())
-
             dialog.dismiss()
 
 //            if (title.isEmpty() || text.isEmpty()) {
