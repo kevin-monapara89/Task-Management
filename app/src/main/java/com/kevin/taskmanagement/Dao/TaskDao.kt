@@ -20,7 +20,7 @@ interface TaskDao {
     @Update
     fun UpdateTask(taskEnitiy:TaskEnitiy)
 
-    @Delete
-    fun DeleteTask(taskEnitiy: TaskEnitiy)
+    @Query("DELETE FROM task WHERE id= :id ")
+    fun DeleteTask(id: Int)
 
 }
