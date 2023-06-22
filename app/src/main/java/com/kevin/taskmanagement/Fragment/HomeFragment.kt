@@ -11,6 +11,8 @@ import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Delete
+import androidx.room.Update
 import com.kevin.taskmanagement.Adapter.TaskAdapter
 import com.kevin.taskmanagement.Database.RoomDB
 import com.kevin.taskmanagement.Enitiy.TaskEnitiy
@@ -20,51 +22,77 @@ import com.kevin.taskmanagement.databinding.UpdatedialogBinding
 import java.text.SimpleDateFormat
 import java.util.Date
 
-class HomeFragment : Fragment() {
+//class HomeFragment : Fragment() {
+//
+//    lateinit var binding: FragmentHomeBinding
+//    var Tasklist = ArrayList<TaskEnitiy>()
+//    lateinit var db: RoomDB
+//    lateinit var adapter: TaskAdapter
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?,
+//    ): View {
+//        binding = FragmentHomeBinding.inflate(layoutInflater)
+//        db = RoomDB.init(context)
+//
+////        adapter = TaskAdapter(Tasklist as ArrayList<TaskEnitiy>)
+////         {.
+////         Update(it)
+////        }
+////        ) {
+////            Delete(it)
+////        }
+//
+//        initView()
+//
+//        return binding.root
+//    }
+//
+//    private fun initView() {
+//        adapter.setTask(db.task().GetTask())
+//        binding.rcvtasklist.layoutManager = LinearLayoutManager(context)
+//        binding.rcvtasklist.adapter = adapter
+//}
+//
 
+//
+//
+//
+//    }
+
+class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
+    lateinit var adapter: TaskAdapter
     var Tasklist = ArrayList<TaskEnitiy>()
     lateinit var db: RoomDB
-    lateinit var adapter: TaskAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentHomeBinding.inflate(layoutInflater)
+
         db = RoomDB.init(context)
 
-        adapter = TaskAdapter(Tasklist as ArrayList<TaskEnitiy>,
-         {
-         Update(it)
-        }
-        ) {
-            Delete(it)
-        }
-
-        initView()
         initview()
 
         return binding.root
     }
-    private fun initview() {
 
-    private fun initView() {
-        adapter = TaskAdapter(db.task().GetTask())
+
+    private fun initview() {
         var list = db.task().GetTask()
         adapter = TaskAdapter(
-            list as ArrayList<TaskEnitiy>
-        )
+            list as ArrayList<TaskEnitiy>, {
+                Update(it)
+            }, {
+                Delete(it)
+            })
+
         binding.rcvtasklist.layoutManager = LinearLayoutManager(context)
         binding.rcvtasklist.adapter = adapter
-    }
 
-}
-
-    private fun Delete(it: Int) {
-        db.task().DeleteTask(it)
-        db.task().DeleteTask(it)
-        adapter.update(db.task().GetTask())
 
     }
     private fun Update(it: TaskEnitiy) {
@@ -77,7 +105,7 @@ class HomeFragment : Fragment() {
 
             var date = Date()
 
-            var format1 = SimpleDateFormat("dd-MM-YYYY")
+            var format1 = SimpleDateFormat("dd-MM-YY")
             var currentDate = format1.format(date)
 
             var dates = currentDate.split("-")
@@ -98,10 +126,13 @@ class HomeFragment : Fragment() {
                 }, dates[2].toInt(), dates[1].toInt() - 1, dates[0].toInt())
             dialog.show()
         }
+
         b.edttime.setOnClickListener {
             var date = Date()
-            var format2 = SimpleDateFormat("hh:mm a")
+
+            var format2 = SimpleDateFormat("hh:mm")
             var currentTime = format2.format(date)
+
             b.edttime.text = currentTime
             var seleTime = currentTime
             var dialog1 = TimePickerDialog(context, object : TimePickerDialog.OnTimeSetListener {
@@ -109,32 +140,29 @@ class HomeFragment : Fragment() {
 
                     var hour = p1
                     var minute = p2
-                    var am_pm = if (p1 < 12) "AM" else "PM"
-                    var sdf = SimpleDateFormat("hh:mm a", Locale.US)
-                    var tme = "$hour:$minute $am_pm"
+                    var sdf = SimpleDateFormat("hh:mm", Locale.US)
+                    var tme = "$hour:$minute "
                     b.edttime.setText(tme)
-//                    var selectedTime = "$p1:$p2"
-//                    binding.edttime.text = selectedTime
                 }
-
             }, 10, 0, true)
             dialog1.show()
         }
 
         b.btnsubmit.setOnClickListener {
 
-            var text = b.edtdescription.text.toString()
             var title = b.edtTask.text.toString()
+            var text = b.edtdescription.text.toString()
             var Date = b.edtdate.text.toString()
             var Month = b.edtdate.text.toString()
             var Year = b.edtdate.text.toString()
             var hour = b.edttime.text.toString()
             var minute = b.edttime.text.toString()
-            var format = SimpleDateFormat("dd-MM-YYYY hh:mm a")
+            var format = SimpleDateFormat("dd-MM-YY hh:mm")
             var current = format.format(Date())
-
-
+            var data = TaskEnitiy(title, text, Date, Month, Year, hour, minute)
             var tasks = db.task().GetTask()
+            db.task().UpdateTask(data)
+
             for (task in tasks) {
                 task.title = title
                 task.discription = text
@@ -144,26 +172,20 @@ class HomeFragment : Fragment() {
                 task.year = Year
                 task.minute = minute
 
-
                 var data = TaskEnitiy(title, text, Date, Month, Year, hour, minute)
-
-
                 db.task().UpdateTask(task)
             }
 
             adapter.update(db.task().GetTask())
             dialog.dismiss()
-
-//            if (title.isEmpty() || text.isEmpty()) {
-//                Toast.makeText(context, "Please enter data", Toast.LENGTH_SHORT).show()
-//            } else {
-//                binding.edtTask.setText("")
-//                binding.edtdescription.setText("")
-//            }
         }
 
         dialog.show()
-
     }
 
+    private fun Delete(it: Int) {
+        db.task().DeleteTask(it)
+        adapter.update(db.task().GetTask())
+
     }
+}

@@ -129,19 +129,11 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#FF9800"
-                    android:textSize="@dimen/_12sdp"
-                    android:textStyle="bold"
-                    android:text="Low" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_15sdp"
-                    android:textColor="#FF5722"
+                    android:textColor="#2261FF"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
-                    android:text="Medium" />
+                    android:text="Normal" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -150,7 +142,7 @@
                     android:textColor="#DF1242"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
-                    android:text="High" />
+                    android:text="Important" />
 
                 </RadioGroup>
 

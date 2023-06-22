@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                app:cardBackgroundColor="#FFC107"
+                app:cardBackgroundColor="#85AAF4"
                 app:cardCornerRadius="@dimen/_5sdp">
 
                 <TextView
@@ -51,7 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Low"
+                    android:text="Normal"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_8sdp" />
 
@@ -136,24 +136,13 @@
 
             </LinearLayout>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/check"
-                android:layout_width="@dimen/_17sdp"
-                android:layout_height="@dimen/_17sdp"
-                android:layout_gravity="center|right"
-                android:layout_marginRight="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_6sdp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/_30sdp">
-
-                <ImageView
-                    android:id="@+id/imgcheck"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/circle"
-                    app:tint="#9B9E9B" />
-
-            </androidx.cardview.widget.CardView>
+               <CheckBox
+                   android:id="@+id/check"
+                   android:layout_width="@dimen/_17sdp"
+                   android:layout_height="@dimen/_17sdp"
+                   android:layout_gravity="center|right"
+                   android:layout_marginRight="@dimen/_15sdp"
+                   android:layout_marginTop="@dimen/_6sdp"/>
 
         </FrameLayout>
 
