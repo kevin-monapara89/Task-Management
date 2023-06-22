@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "task")
 data class TaskEnitiy(
 
-
     @ColumnInfo(name = "title") var title: String,
     @ColumnInfo(name = "text") var discription: String,
     @ColumnInfo(name = "date") var date: String,
