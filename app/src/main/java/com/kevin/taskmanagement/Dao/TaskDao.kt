@@ -21,6 +21,6 @@ interface TaskDao {
     fun UpdateTask(taskEnitiy:TaskEnitiy)
 
     @Delete
-    fun DeleteTask(taskEnitiy: TaskEnitiy)
+    fun DeleteTask(taskEnitiy: Int)
 
 }
