@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.kevin.taskmanagement.databinding.ActivityIntroductionPageBinding
+import com.kevin.taskmanagement.databinding.ActivityLoginactivityBinding
 
 class IntroductionPage : AppCompatActivity() {
 
@@ -15,7 +16,7 @@ class IntroductionPage : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnstart.setOnClickListener {
-            val mainIntent = Intent(this, MainActivity::class.java)
+            val mainIntent = Intent(this, loginactivity::class.java)
             startActivity(mainIntent)
             finish()
         }

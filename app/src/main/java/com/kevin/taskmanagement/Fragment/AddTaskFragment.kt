@@ -100,9 +100,16 @@ class AddTaskFragment : Fragment() {
             binding.edtdescription.setText("")
             binding.edtdate.setText("")
             binding.edttime.setText("")
-            var data = TaskEnitiy(title, discription, Date, Month, Year, hour, minute)
+            var data = TaskEnitiy(
+                title,
+                discription,
+                Date,
+                Month,
+                Year,
+                hour,
+                minute
+            )
             db.task().AddTask(data)
-
         }
     }
 
