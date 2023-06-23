@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,9 +14,8 @@
         android:theme="@style/Theme.TaskManagement"
         tools:targetApi="31">
         <activity
-            android:name=".ui.login.LoginActivity2"
-            android:exported="false"
-            android:label="@string/title_activity_login2" />
+            android:name=".Activity.RegisterActivity"
+            android:exported="false" />
         <activity
             android:name=".Activity.loginactivity"
             android:exported="false" />

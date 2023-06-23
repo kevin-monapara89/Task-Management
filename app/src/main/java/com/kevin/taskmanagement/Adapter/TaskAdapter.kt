@@ -7,7 +7,6 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.os.Build
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -162,30 +161,17 @@ class TaskAdapter(getTask: ArrayList<TaskEnitiy>, Update: (TaskEnitiy) -> Unit, 
 
         }
 
-//    createdNotificationChannel()
-    }
-
-
-
-//    private fun createdNotificationChannel() {
-//
-//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-//            val name = "Npotifiction Title"
-//            val descriptionText = "Notifiction Descriprition"
-//            val importance = NotificationManager.IMPORTANCE_DEFAULT
-//            val channel = NotificationChannel(CHANNEL_ID,name, importance).apply {
-//                description = descriptionText
-//            }
-//            val notificationManager:NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-//            notificationManager.createNotificationChannel(channel)
-//        }
-//    }
-
     }
 
     fun update(l: List<TaskEnitiy>) {
         this.getTask = l as ArrayList<TaskEnitiy>
         notifyDataSetChanged()
+
     }
 
-}
+    }
+
+
+
+
+

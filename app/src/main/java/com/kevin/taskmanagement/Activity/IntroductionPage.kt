@@ -15,7 +15,7 @@ class IntroductionPage : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnstart.setOnClickListener {
-            val mainIntent = Intent(this, MainActivity::class.java)
+            val mainIntent = Intent(this, loginactivity::class.java)
             startActivity(mainIntent)
             finish()
         }

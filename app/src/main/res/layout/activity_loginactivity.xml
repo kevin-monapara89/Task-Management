@@ -49,14 +49,14 @@
                 android:layout_height="@dimen/_24sdp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/_10sdp"
-                android:tint="#011F39"
-                android:src="@drawable/user" />
+                android:src="@drawable/user"
+                app:tint="#011F39" />
 
             <EditText
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_35sdp"
-                android:background="null"
+                android:background="@null"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:hint="Username" />
 
@@ -83,7 +83,7 @@
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_35sdp"
-                android:background="null"
+                android:background="@null"
                 android:inputType="numberPassword"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:hint="Password" />
