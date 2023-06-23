@@ -25,8 +25,8 @@
             android:layout_height="match_parent"
             android:text="Welcome"
             android:textColor="#024074"
-            android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:gravity="bottom"
             android:paddingLeft="@dimen/_15sdp"
             android:textSize="@dimen/_18sdp"
             android:textStyle="bold" />
@@ -39,6 +39,7 @@
                 app:cardElevation="@dimen/_1sdp">
 
                 <ImageView
+                    android:id="@+id/sortby"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
@@ -58,12 +59,14 @@
             android:textStyle="bold" />
 
             <androidx.appcompat.widget.SearchView
-                android:id="@+id/tasksearch"
+                android:id="@+id/searchData"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_34sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginLeft="@dimen/_15sdp"
-                android:background="@drawable/borderbg" />
+                android:background="@drawable/borderbg" >
+
+            </androidx.appcompat.widget.SearchView>
 
     </LinearLayout>
 
@@ -73,7 +76,7 @@
         android:text="Recently Tasks To-Do:"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginLeft="@dimen/_16sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_7sdp"
         android:textColor="@color/black"
         android:textStyle="bold" />
 
@@ -81,6 +84,6 @@
         android:id="@+id/rcvtasklist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/_60sdp"/>
+        android:layout_marginBottom="@dimen/_55sdp"/>
 
 </LinearLayout>

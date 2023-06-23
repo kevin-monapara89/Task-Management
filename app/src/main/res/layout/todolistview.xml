@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="@dimen/_10sdp"
-    app:cardElevation="@dimen/_3sdp"
+    app:cardElevation="@dimen/_2sdp"
     android:layout_marginLeft="@dimen/_15sdp"
     android:layout_marginRight="@dimen/_15sdp"
-    android:layout_marginTop="@dimen/_15sdp">
+    android:layout_marginBottom="@dimen/_10sdp">
 
     <LinearLayout
+        android:id="@+id/listbg"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_90sdp"
         android:orientation="horizontal">
@@ -37,26 +38,6 @@
             android:layout_marginBottom="@dimen/_4sdp"
             android:orientation="horizontal">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/prioritybg"
-                android:layout_width="@dimen/_45sdp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                app:cardBackgroundColor="#85AAF4"
-                app:cardCornerRadius="@dimen/_5sdp">
-
-                <TextView
-                    android:id="@+id/txtpriority"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Normal"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_8sdp" />
-
-            </androidx.cardview.widget.CardView>
-
             <TextView
                 android:id="@+id/txttitle"
                 android:layout_width="wrap_content"
@@ -64,6 +45,8 @@
                 android:layout_marginTop="@dimen/_20sdp"
                 android:text="fhiuhslknjklnlklnllnkln"
                 android:textColor="#191919"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:textSize="@dimen/_14sdp"
                 android:textSize="@dimen/_15sdp"
                 android:textStyle="bold" />
 

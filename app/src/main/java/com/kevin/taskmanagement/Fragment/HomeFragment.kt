@@ -7,68 +7,38 @@ import android.app.TimePickerDialog
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import android.widget.PopupMenu
 import android.widget.TimePicker
 import androidx.annotation.RequiresApi
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Delete
 import androidx.room.Update
 import com.kevin.taskmanagement.Adapter.TaskAdapter
 import com.kevin.taskmanagement.Database.RoomDB
 import com.kevin.taskmanagement.Enitiy.TaskEnitiy
+import com.kevin.taskmanagement.R
 import com.kevin.taskmanagement.databinding.FragmentHomeBinding
 import com.kevin.taskmanagement.databinding.TodolistviewBinding
 import java.util.Locale
 import com.kevin.taskmanagement.databinding.UpdatedialogBinding
 import java.text.SimpleDateFormat
 import java.util.Date
-
-//class HomeFragment : Fragment() {
-//
-//    lateinit var binding: FragmentHomeBinding
-//    var Tasklist = ArrayList<TaskEnitiy>()
-//    lateinit var db: RoomDB
-//    lateinit var adapter: TaskAdapter
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?,
-//    ): View {
-//        binding = FragmentHomeBinding.inflate(layoutInflater)
-//        db = RoomDB.init(context)
-//
-////        adapter = TaskAdapter(Tasklist as ArrayList<TaskEnitiy>)
-////         {.
-////         Update(it)
-////        }
-////        ) {
-////            Delete(it)
-////        }
-//
-//        initView()
-//
-//        return binding.root
-//    }
-//
-//    private fun initView() {
-//        adapter.setTask(db.task().GetTask())
-//        binding.rcvtasklist.layoutManager = LinearLayoutManager(context)
-//        binding.rcvtasklist.adapter = adapter
-//}
-//
+import kotlin.time.Duration.Companion.days
 
 //
-//
-//
-//    }
-
 class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
     lateinit var adapter: TaskAdapter
     var Tasklist = ArrayList<TaskEnitiy>()
+    lateinit var tempadapter: ArrayList<TaskEnitiy>
     lateinit var db: RoomDB
     lateinit var todolistviewBinding: TodolistviewBinding
 
@@ -79,6 +49,7 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(layoutInflater)
 
         db = RoomDB.init(context)
+        tempadapter = ArrayList<TaskEnitiy>()
 
         initview()
 
@@ -99,8 +70,58 @@ class HomeFragment : Fragment() {
         binding.rcvtasklist.layoutManager = LinearLayoutManager(context)
         binding.rcvtasklist.adapter = adapter
 
+        binding.sortby.setOnClickListener(fun (v: View?) {
+            var popupMenu = PopupMenu(context,view)
+            popupMenu.menuInflater.inflate(R.menu.sortby, popupMenu.menu)
 
+            popupMenu.setOnMenuItemClickListener(object : PopupMenu.OnMenuItemClickListener {
+                override fun onMenuItemClick(p0: MenuItem?): Boolean {
+
+                    if (p0?.itemId == R.id.oltola) {
+                        tempadapter.sortBy {
+                            it.date
+                        }
+                    }
+
+                    if (p0?.itemId == R.id.latool) {
+                        tempadapter.sortByDescending {
+                            it.date
+                        }
+                    }
+                    adapter.update(db.task().GetTask())
+                    return true
+                }
+            })
+            popupMenu.show()
+        })
+
+//        binding.searchData.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                searchView.clearFocus()
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//
+//                seachList.clear()
+//                var searchtext = newText!!.toLowerCase(Locale.getDefault())
+//                if (searchtext.isNotEmpty()){
+//                    seachList.forEach {
+//                        if (it.title.toLowerCase(Locale.getDefault()).contains(searchtext)) {
+//                            seachList.add(it)
+//                        }
+//                    }
+//                    binding.rcvtasklist.adapter!!.notifyDataSetChanged()
+//                } else {
+//                    seachList.clear()
+//                    seachList.addAll(seachList)
+//                    binding.rcvtasklist.adapter!!.notifyDataSetChanged()
+//                }
+//                return false
+//            }
+//        })
     }
+
     @SuppressLint("NewApi")
     @RequiresApi(Build.VERSION_CODES.N)
     private fun Update(it: TaskEnitiy) {
@@ -130,7 +151,6 @@ class HomeFragment : Fragment() {
                         var selectedDate = "$p3-${(p2 + 1)}-$p1"
                         b.edtdate.text = selectedDate
                     }
-
                 }, dates[2].toInt(), dates[1].toInt() - 1, dates[0].toInt())
             dialog.show()
         }
@@ -157,7 +177,6 @@ class HomeFragment : Fragment() {
         }
 
         b.btnsubmit.setOnClickListener {
-
             var title = b.edtTask.text.toString()
             var text = b.edtdescription.text.toString()
             var Date = b.edtdate.text.toString()
@@ -169,26 +188,34 @@ class HomeFragment : Fragment() {
             var current = format.format(Date())
             var data = TaskEnitiy(title, text, Date, Month, Year, hour, minute)
             var tasks = db.task().GetTask()
-            db.task().UpdateTask(data)
 
             for (task in tasks) {
                 task.title = title
                 task.discription = text
-                task.hour = hour
                 task.date = Date
                 task.month = Month
                 task.year = Year
+                task.hour = hour
                 task.minute = minute
+                task.id
 
+                if (title.isEmpty() || text.isEmpty() || Date.isEmpty() || Month.isEmpty() || Year.isEmpty() || hour.isEmpty() || minute.isEmpty()) {
+                    Toast.makeText(context, "Please enter data", Toast.LENGTH_SHORT).show()
+                } else {
+                    b.edtTask.setText("")
+                    b.edtdescription.setText("")
+                    b.edtdate.setText("")
+                    b.edttime.setText("")
+                    var data = TaskEnitiy(title, text, Date, Month, Year, hour, minute)
+                    db.task().UpdateTask(task)
+                }
 
                 var data = TaskEnitiy(title, text, Date, Month, Year, hour, minute)
                 db.task().UpdateTask(task)
             }
-
             adapter.update(db.task().GetTask())
             dialog.dismiss()
         }
-
         dialog.show()
 
 
@@ -199,6 +226,5 @@ class HomeFragment : Fragment() {
     private fun Delete(it: Int) {
         db.task().DeleteTask(it)
         adapter.update(db.task().GetTask())
-
     }
 }

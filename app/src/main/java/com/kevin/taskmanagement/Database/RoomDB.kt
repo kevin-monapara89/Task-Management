@@ -8,7 +8,7 @@ import com.kevin.taskmanagement.Dao.TaskDao
 import com.kevin.taskmanagement.Enitiy.TaskEnitiy
 
 
-@Database(entities = [TaskEnitiy::class], version = 1)
+@Database(entities = [TaskEnitiy::class], version = 2)
 abstract class RoomDB : RoomDatabase() {
 
     companion object {

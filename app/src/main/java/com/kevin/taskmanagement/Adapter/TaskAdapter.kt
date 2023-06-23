@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Build
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -27,79 +28,7 @@ import com.kevin.taskmanagement.R
 import com.kevin.taskmanagement.databinding.TodolistviewBinding
 import java.nio.file.attribute.AclEntry.Builder
 
-//class TaskAdapter(update: (TaskEnitiy) -> Unit, delete: (Int) -> Unit) :
-//    RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
-//
-//    lateinit var context: Context
-
-//    lateinit var taskEnitiy: TaskEnitiy
-//    lateinit var db: RoomDB
-//    lateinit var getTask : List<TaskEnitiy>
-////    private var filteredList: MutableList<TaskEnitiy> = getTask.toMutableList()
-//
-//    class TaskHolder(itemView: TodolistviewBinding) : ViewHolder(itemView.root) {
-//        var binding = itemView
-//    }
-//
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskHolder {
-//        var binding = TodolistviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-//        return TaskHolder(binding)
-//    }
-//
-//    override fun getItemCount(): Int {
-//        return getTask.size
-//    }
-//
-//    override fun onBindViewHolder(holder: TaskHolder, position: Int) {
-//        holder.binding.apply {
-//            getTask.get(position).apply {
-//                txttitle.text = title
-//                txtdiscription.text = discription
-//                txtdate.text = date
-//                txtdate.text = month
-//                txtdate.text = year
-//                txttime.text = hour
-//                txttime.text = minute
-//            }
-//        }
-//    }
-//
-//    holder.binding.menuitem.setOnClickListener(Override fun onClick(v: View?) {
-//        var popupMenu = PopupMenu(context, holder.itemView)
-//        popupMenu.menuInflater.inflate(R.menu.delete_ubdate, popupMenu.menu)
-//
-//        popupMenu.setOnMenuItemClickListener(object : PopupMenu.OnMenuItemClickListener {
-//            override fun onMenuItemClick(p0: MenuItem?): Boolean {
-//
-//                if (p0?.itemId == R.id.update) {
-//                    update.invoke(list.get(position))
-//                }
-//
-//                if (p0?.itemId == R.id.delete) {
-//                    delete.invoke(list.get(position).id)
-//                }
-//                return true
-//            }
-//        })
-//        popupMenu.show()
-//
-//    }
-//    })
-
-
-//
-//fun update(l: List<TaskEnitiy>) {
-//    this.getTask = getTask
-//    notifyDataSetChanged()
-//}
-//
-//    fun setTask(getTask: List<TaskEnitiy>) {
-//        this.getTask = getTask
-//    }
-//}
-
-class TaskAdapter(getTask: List<TaskEnitiy>, Update: (TaskEnitiy) -> Unit, delete: (Int) -> Unit) :
+class TaskAdapter(getTask: ArrayList<TaskEnitiy>, Update: (TaskEnitiy) -> Unit, delete: (Int) -> Unit) :
     RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
     var getTask = getTask
     var update = Update
@@ -252,11 +181,11 @@ class TaskAdapter(getTask: List<TaskEnitiy>, Update: (TaskEnitiy) -> Unit, delet
 //        }
 //    }
 
+    }
 
     fun update(l: List<TaskEnitiy>) {
         this.getTask = l as ArrayList<TaskEnitiy>
         notifyDataSetChanged()
     }
-
 
 }
