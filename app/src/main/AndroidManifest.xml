@@ -12,6 +12,13 @@
         android:theme="@style/Theme.TaskManagement"
         tools:targetApi="31">
         <activity
+            android:name=".ui.login.LoginActivity2"
+            android:exported="false"
+            android:label="@string/title_activity_login2" />
+        <activity
+            android:name=".Activity.loginactivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.IntroductionPage"
             android:exported="false" />
         <activity
@@ -25,8 +32,7 @@
         </activity>
         <activity
             android:name=".Activity.MainActivity"
-            android:exported="true"/>
-
+            android:exported="true" />
     </application>
 
 </manifest>
