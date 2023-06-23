@@ -93,7 +93,7 @@ class AddTaskFragment : Fragment() {
         var format = SimpleDateFormat("dd-MM-yy hh:mm")
         var current = format.format(Date())
 
-        if (title.isEmpty() || discription.isEmpty() || Date.toString().isEmpty() || Month.toString().isEmpty() || Year.toString().isEmpty() || hour.toString().isEmpty()  || minute.toString().isEmpty()) {
+        if (title.isEmpty() || discription.isEmpty() || Date.isEmpty() || Month.isEmpty() || Year.isEmpty() || hour.isEmpty()  || minute.isEmpty()) {
             Toast.makeText(context, "Please enter data", Toast.LENGTH_SHORT).show()
         } else {
             binding.edtTask.setText("")

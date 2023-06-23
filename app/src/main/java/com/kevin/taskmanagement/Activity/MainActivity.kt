@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.kevin.taskmanagement.Fragment.AddTaskFragment
 import com.kevin.taskmanagement.Fragment.HomeFragment
-import com.kevin.taskmanagement.Fragment.ListFragment
 import com.kevin.taskmanagement.R
 import com.kevin.taskmanagement.databinding.ActivityMainBinding
 
@@ -22,7 +21,6 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId) {
                 R.id.Home -> replaceFragment(HomeFragment())
                 R.id.Add -> replaceFragment(AddTaskFragment())
-                R.id.List -> replaceFragment(ListFragment())
 
                 else -> {
 

@@ -15,7 +15,7 @@ import com.kevin.taskmanagement.Enitiy.TaskEnitiy
 import com.kevin.taskmanagement.R
 import com.kevin.taskmanagement.databinding.TodolistviewBinding
 
-class TaskAdapter(getTask: List<TaskEnitiy>, Update: (TaskEnitiy) -> Unit, delete: (Int) -> Unit) :
+class TaskAdapter(getTask: ArrayList<TaskEnitiy>, Update: (TaskEnitiy) -> Unit, delete: (Int) -> Unit) :
     RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
     var getTask = getTask
     var update = Update

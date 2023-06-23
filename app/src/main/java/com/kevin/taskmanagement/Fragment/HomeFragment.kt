@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.PopupMenu
 import android.widget.TimePicker
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,7 +33,7 @@ import kotlin.time.Duration.Companion.days
 class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
     lateinit var adapter: TaskAdapter
-    var Tasklist = ArrayList<TaskAdapter>()
+    var Tasklist = ArrayList<TaskEnitiy>()
     lateinit var tempadapter: ArrayList<TaskEnitiy>
     lateinit var db: RoomDB
 
@@ -47,38 +48,10 @@ class HomeFragment : Fragment() {
 
         initview()
 
-//        searchView.clearFocus()
-//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                searchView.clearFocus()
-//                return true
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//
-//                seachList.clear()
-//                var searchtext = newText!!.toLowerCase(Locale.getDefault())
-//                if (searchtext.isNotEmpty()){
-//                    seachList.forEach {
-//                        if (it.title.toLowerCase(Locale.getDefault()).contains(searchtext)) {
-//                            seachList.add(it)
-//                        }
-//                    }
-//                    binding.rcvtasklist.adapter!!.notifyDataSetChanged()
-//                } else {
-//                    seachList.clear()
-//                    seachList.addAll(seachList)
-//                    binding.rcvtasklist.adapter!!.notifyDataSetChanged()
-//                }
-//                return false
-//            }
-//        })
-
         return binding.root
     }
 
     private fun initview() {
-
         var list = db.task().GetTask()
         adapter = TaskAdapter(
             list as ArrayList<TaskEnitiy>, {
@@ -114,6 +87,32 @@ class HomeFragment : Fragment() {
             })
             popupMenu.show()
         })
+
+//        binding.searchData.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                searchView.clearFocus()
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//
+//                seachList.clear()
+//                var searchtext = newText!!.toLowerCase(Locale.getDefault())
+//                if (searchtext.isNotEmpty()){
+//                    seachList.forEach {
+//                        if (it.title.toLowerCase(Locale.getDefault()).contains(searchtext)) {
+//                            seachList.add(it)
+//                        }
+//                    }
+//                    binding.rcvtasklist.adapter!!.notifyDataSetChanged()
+//                } else {
+//                    seachList.clear()
+//                    seachList.addAll(seachList)
+//                    binding.rcvtasklist.adapter!!.notifyDataSetChanged()
+//                }
+//                return false
+//            }
+//        })
     }
 
     private fun Update(it: TaskEnitiy) {
@@ -143,7 +142,6 @@ class HomeFragment : Fragment() {
                         var selectedDate = "$p3-${(p2 + 1)}-$p1"
                         b.edtdate.text = selectedDate
                     }
-
                 }, dates[2].toInt(), dates[1].toInt() - 1, dates[0].toInt())
             dialog.show()
         }
@@ -190,9 +188,18 @@ class HomeFragment : Fragment() {
                 task.year = Year
                 task.hour = hour
                 task.minute = minute
+                task.id
 
-                var data = TaskEnitiy(title, text, Date, Month, Year, hour, minute)
-                db.task().UpdateTask(data)
+                if (title.isEmpty() || text.isEmpty() || Date.isEmpty() || Month.isEmpty() || Year.isEmpty() || hour.isEmpty() || minute.isEmpty()) {
+                    Toast.makeText(context, "Please enter data", Toast.LENGTH_SHORT).show()
+                } else {
+                    b.edtTask.setText("")
+                    b.edtdescription.setText("")
+                    b.edtdate.setText("")
+                    b.edttime.setText("")
+                    var data = TaskEnitiy(title, text, Date, Month, Year, hour, minute)
+                    db.task().UpdateTask(task)
+                }
             }
             adapter.update(db.task().GetTask())
             dialog.dismiss()
