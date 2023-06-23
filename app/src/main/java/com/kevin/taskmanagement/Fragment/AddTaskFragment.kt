@@ -1,5 +1,6 @@
 package com.kevin.taskmanagement.Fragment
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
@@ -32,6 +33,7 @@ class AddTaskFragment : Fragment() {
 
         return binding.root
     }
+    @SuppressLint("NewApi")
     private fun AddData() {
         binding.edtdate.setOnClickListener {
 

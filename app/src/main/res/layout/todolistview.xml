@@ -12,7 +12,7 @@
     <LinearLayout
         android:id="@+id/listbg"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_65sdp"
+        android:layout_height="@dimen/_90sdp"
         android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
@@ -42,18 +42,18 @@
                 android:id="@+id/txttitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:text="fhiuhslknjklnlklnllnkln"
                 android:textColor="#191919"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/_15sdp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txtdiscription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="fhiuhslk"
                 android:layout_marginTop="@dimen/_40sdp"
+                android:text="fhiuhslk"
                 android:textColor="#6A6A6A"
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold" />
@@ -62,18 +62,18 @@
                 android:id="@+id/shapebg"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_20sdp"
-                android:background="@drawable/todoshape"
-                android:layout_marginLeft="@dimen/_70sdp"
                 android:layout_gravity="right"
+                android:layout_marginLeft="@dimen/_70sdp"
+                android:background="@drawable/todoshape"
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="#FCFDFD"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_13sdp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="#FCFDFD"
                     app:cardCornerRadius="@dimen/_4sdp">
 
                     <TextView
@@ -91,8 +91,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
                     android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_weight="1"
                     app:cardBackgroundColor="#FAFBFB"
                     app:cardCornerRadius="@dimen/_4sdp">
 
@@ -113,19 +113,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/option"/>
+                    android:src="@drawable/option" />
 
             </LinearLayout>
 
-               <CheckBox
-                   android:id="@+id/check"
-                   android:layout_width="@dimen/_17sdp"
-                   android:layout_height="@dimen/_17sdp"
-                   android:layout_gravity="center|right"
-                   android:layout_marginRight="@dimen/_15sdp"
-                   android:layout_marginTop="@dimen/_6sdp"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_17sdp"
+                android:layout_height="@dimen/_17sdp"
+                android:layout_gravity="center|right"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_30sdp">
+
+                <CheckBox
+                    android:id="@+id/imgCheck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/notify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_60sdp"
+                android:onClick="show"
+                android:layout_marginLeft="@dimen/_180sdp"
+                android:src="@drawable/baseline_notifications_none_24"/>
 
         </FrameLayout>
+
+
+
 
     </LinearLayout>
 

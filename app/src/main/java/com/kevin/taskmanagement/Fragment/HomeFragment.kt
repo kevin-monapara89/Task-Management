@@ -1,8 +1,10 @@
 package com.kevin.taskmanagement.Fragment
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.TimePickerDialog
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -11,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.PopupMenu
 import android.widget.TimePicker
+import androidx.annotation.RequiresApi
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +22,7 @@ import com.kevin.taskmanagement.Database.RoomDB
 import com.kevin.taskmanagement.Enitiy.TaskEnitiy
 import com.kevin.taskmanagement.R
 import com.kevin.taskmanagement.databinding.FragmentHomeBinding
+import com.kevin.taskmanagement.databinding.TodolistviewBinding
 import java.util.Locale
 import com.kevin.taskmanagement.databinding.UpdatedialogBinding
 import java.text.SimpleDateFormat
@@ -32,6 +36,7 @@ class HomeFragment : Fragment() {
     var Tasklist = ArrayList<TaskEnitiy>()
     lateinit var tempadapter: ArrayList<TaskEnitiy>
     lateinit var db: RoomDB
+    lateinit var todolistviewBinding: TodolistviewBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,6 +52,8 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+
+    @SuppressLint("NewApi")
     private fun initview() {
         var list = db.task().GetTask()
         adapter = TaskAdapter(
@@ -111,6 +118,8 @@ class HomeFragment : Fragment() {
 //        })
     }
 
+    @SuppressLint("NewApi")
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun Update(it: TaskEnitiy) {
 
         var dialog = Dialog(requireContext())
@@ -196,12 +205,19 @@ class HomeFragment : Fragment() {
                     var data = TaskEnitiy(title, text, Date, Month, Year, hour, minute)
                     db.task().UpdateTask(task)
                 }
+
+                var data = TaskEnitiy(title, text, Date, Month, Year, hour, minute)
+                db.task().UpdateTask(task)
             }
             adapter.update(db.task().GetTask())
             dialog.dismiss()
         }
         dialog.show()
+
+
     }
+
+
 
     private fun Delete(it: Int) {
         db.task().DeleteTask(it)

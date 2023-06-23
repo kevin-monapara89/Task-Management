@@ -14,6 +14,8 @@ data class TaskEnitiy(
     @ColumnInfo(name = "year") var year: String,
     @ColumnInfo(name = "hour") var hour: String,
     @ColumnInfo(name = "minute") var minute: String,
+
+//    @ColumnInfo(name = "isChecked") var isChecked:Boolean,
 )
 {
     @PrimaryKey(autoGenerate = true) var id: Int = 0
