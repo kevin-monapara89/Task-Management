@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.kevin.taskmanagement.Database.RoomDB
-import com.kevin.taskmanagement.Enitiy.LoginEntity
 import com.kevin.taskmanagement.Enitiy.TaskEnitiy
-import com.kevin.taskmanagement.R
-import com.kevin.taskmanagement.databinding.ActivityIntroductionPageBinding
 import com.kevin.taskmanagement.databinding.ActivityLoginactivityBinding
 
 class loginactivity : AppCompatActivity() {
@@ -21,11 +18,7 @@ class loginactivity : AppCompatActivity() {
         binding = ActivityLoginactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.login.setOnClickListener {
-            val mainIntent = Intent(this, MainActivity::class.java)
-            startActivity(mainIntent)
-            finish()
-        }
+
         initView()
     }
 
@@ -40,8 +33,11 @@ class loginactivity : AppCompatActivity() {
             } else {
                 binding.username.setText("")
                 binding.password.setText("")
-                var userdata = LoginEntity(username, lpassword)
-                db.task().LoginEntity(userdata)
+//                var userdata = TaskEnitiy(username, lpassword)
+//                db.task().LoginEntity(userdata)
+                val mainIntent = Intent(this, MainActivity::class.java)
+                startActivity(mainIntent)
+                finish()
             }
         }
     }
