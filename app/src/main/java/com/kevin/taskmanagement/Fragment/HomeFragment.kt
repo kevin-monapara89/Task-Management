@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.TimePickerDialog
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,12 +13,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.PopupMenu
+import android.widget.SearchView
 import android.widget.TimePicker
 import androidx.annotation.RequiresApi
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Delete
+import androidx.room.Update
 import com.kevin.taskmanagement.Adapter.TaskAdapter
+import com.kevin.taskmanagement.Dao.TaskDao
 import com.kevin.taskmanagement.Database.RoomDB
 import com.kevin.taskmanagement.Enitiy.TaskEnitiy
 import com.kevin.taskmanagement.R
@@ -29,15 +34,13 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import kotlin.time.Duration.Companion.days
 
-//
 class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
     lateinit var adapter: TaskAdapter
     var Tasklist = ArrayList<TaskEnitiy>()
-    lateinit var tempadapter: ArrayList<TaskEnitiy>
     lateinit var db: RoomDB
-    lateinit var todolistviewBinding: TodolistviewBinding
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -45,7 +48,6 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(layoutInflater)
 
         db = RoomDB.init(context)
-        tempadapter = ArrayList<TaskEnitiy>()
 
         initview()
 
@@ -53,7 +55,7 @@ class HomeFragment : Fragment() {
     }
 
 
-    @SuppressLint("NewApi")
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun initview() {
         var list = db.task().GetTask()
         adapter = TaskAdapter(
@@ -66,61 +68,36 @@ class HomeFragment : Fragment() {
         binding.rcvtasklist.layoutManager = LinearLayoutManager(context)
         binding.rcvtasklist.adapter = adapter
 
-        binding.sortby.setOnClickListener(fun (v: View?) {
-            var popupMenu = PopupMenu(context,view)
-            popupMenu.menuInflater.inflate(R.menu.sortby, popupMenu.menu)
-
-            popupMenu.setOnMenuItemClickListener(object : PopupMenu.OnMenuItemClickListener {
-                override fun onMenuItemClick(p0: MenuItem?): Boolean {
-
-                    if (p0?.itemId == R.id.oltola) {
-                        tempadapter.sortBy {
-                            it.date
-                        }
-                    }
-
-                    if (p0?.itemId == R.id.latool) {
-                        tempadapter.sortByDescending {
-                            it.date
-                        }
-                    }
-                    adapter.update(db.task().GetTask())
-                    return true
-                }
-            })
-            popupMenu.show()
-        })
-
-//        binding.searchData.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                searchView.clearFocus()
-//                return true
-//            }
+//        binding.sortby.setOnClickListener(fun (v: View?) {
+//            var popupMenu = PopupMenu(context,view)
+//            popupMenu.menuInflater.inflate(R.menu.sortby, popupMenu.menu)
 //
-//            override fun onQueryTextChange(newText: String?): Boolean {
+//            popupMenu.setOnMenuItemClickListener(object : PopupMenu.OnMenuItemClickListener {
+//                override fun onMenuItemClick(p0: MenuItem?): Boolean {
 //
-//                seachList.clear()
-//                var searchtext = newText!!.toLowerCase(Locale.getDefault())
-//                if (searchtext.isNotEmpty()){
-//                    seachList.forEach {
-//                        if (it.title.toLowerCase(Locale.getDefault()).contains(searchtext)) {
-//                            seachList.add(it)
+//                    if (p0?.itemId == R.id.oltola) {
+////                        adapter.sortBy {
+////                            it.date
 //                        }
 //                    }
-//                    binding.rcvtasklist.adapter!!.notifyDataSetChanged()
-//                } else {
-//                    seachList.clear()
-//                    seachList.addAll(seachList)
-//                    binding.rcvtasklist.adapter!!.notifyDataSetChanged()
+//
+//                    if (p0?.itemId == R.id.latool) {
+//                        tempadapter.sortByDescending {
+//                            it.date
+//                        }
+//                    }
+//                    adapter.update(db.task().GetTask())
+//                    return true
 //                }
-//                return false
-//            }
+//            })
+//            popupMenu.show()
 //        })
+
+
     }
 
-    @SuppressLint("NewApi")
     @RequiresApi(Build.VERSION_CODES.N)
-    private fun Update(it: TaskEnitiy) {
+    fun Update(it: TaskEnitiy) {
 
         var dialog = Dialog(requireContext())
         var b = UpdatedialogBinding.inflate(layoutInflater)
@@ -130,7 +107,7 @@ class HomeFragment : Fragment() {
 
             var date = Date()
 
-            var format1 = SimpleDateFormat("dd-MM-YY")
+            var format1 = SimpleDateFormat("dd-MM-yy")
             var currentDate = format1.format(date)
 
             var dates = currentDate.split("-")
@@ -159,16 +136,17 @@ class HomeFragment : Fragment() {
 
             b.edttime.text = currentTime
             var seleTime = currentTime
-            var dialog1 = TimePickerDialog(context, object : TimePickerDialog.OnTimeSetListener {
-                override fun onTimeSet(p0: TimePicker?, p1: Int, p2: Int) {
+            var dialog1 =
+                TimePickerDialog(context, object : TimePickerDialog.OnTimeSetListener {
+                    override fun onTimeSet(p0: TimePicker?, p1: Int, p2: Int) {
 
-                    var hour = p1
-                    var minute = p2
-                    var sdf = SimpleDateFormat("hh:mm", Locale.US)
-                    var tme = "$hour:$minute "
-                    b.edttime.setText(tme)
-                }
-            }, 10, 0, true)
+                        var hour = p1
+                        var minute = p2
+                        var sdf = SimpleDateFormat("hh:mm", Locale.US)
+                        var tme = "$hour:$minute "
+                        b.edttime.setText(tme)
+                    }
+                }, 10, 0, true)
             dialog1.show()
         }
 
@@ -180,7 +158,7 @@ class HomeFragment : Fragment() {
             var Year = b.edtdate.text.toString()
             var hour = b.edttime.text.toString()
             var minute = b.edttime.text.toString()
-            var format = SimpleDateFormat("dd-MM-YY hh:mm")
+            var format = SimpleDateFormat("dd-MM-yy hh:mm")
             var current = format.format(Date())
             var data = TaskEnitiy(title, text, Date, Month, Year, hour, minute)
             var tasks = db.task().GetTask()
@@ -205,21 +183,13 @@ class HomeFragment : Fragment() {
                     var data = TaskEnitiy(title, text, Date, Month, Year, hour, minute)
                     db.task().UpdateTask(task)
                 }
-
-                var data = TaskEnitiy(title, text, Date, Month, Year, hour, minute)
-                db.task().UpdateTask(task)
+                adapter.update(db.task().GetTask())
+                dialog.dismiss()
             }
-            adapter.update(db.task().GetTask())
-            dialog.dismiss()
         }
-        dialog.show()
-
-
+            dialog.show()
     }
-
-
-
-    private fun Delete(it: Int) {
+    fun Delete(it: Int) {
         db.task().DeleteTask(it)
         adapter.update(db.task().GetTask())
     }

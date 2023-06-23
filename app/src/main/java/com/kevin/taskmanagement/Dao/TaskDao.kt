@@ -1,5 +1,6 @@
 package com.kevin.taskmanagement.Dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -25,4 +26,6 @@ interface TaskDao {
     @Query("DELETE FROM task WHERE id= :id ")
     fun DeleteTask(id: Int)
 
+    @Query("SELECT * FROM task WHERE title LIKE :searchQuery")
+    fun searchDatabase(searchQuery: String): LiveData<List<TaskEnitiy>>
 }

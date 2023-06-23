@@ -14,6 +14,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -27,16 +28,18 @@ import com.kevin.taskmanagement.R
 import com.kevin.taskmanagement.databinding.TodolistviewBinding
 import java.nio.file.attribute.AclEntry.Builder
 
-class TaskAdapter(getTask: ArrayList<TaskEnitiy>, Update: (TaskEnitiy) -> Unit, delete: (Int) -> Unit) :
+class TaskAdapter(
+    getTask: ArrayList<TaskEnitiy>,
+    Update: (TaskEnitiy) -> Unit,
+    delete: (Int) -> Unit,
+) :
     RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
     var getTask = getTask
     var update = Update
     var delete = delete
     lateinit var context: Context
-    var isChecked = 0
-  private val CHANNEL_ID = "channelId"
+    private val CHANNEL_ID = "channelId"
     private val notificationId = 101
-
 
 
     class TaskHolder(itemView: TodolistviewBinding) : ViewHolder(itemView.root) {
@@ -66,7 +69,7 @@ class TaskAdapter(getTask: ArrayList<TaskEnitiy>, Update: (TaskEnitiy) -> Unit, 
             }
         }
 
-        holder.binding.menuitem.setOnClickListener(fun (v: View?) {
+        holder.binding.menuitem.setOnClickListener(fun(v: View?) {
             var popupMenu = PopupMenu(context, holder.itemView)
             popupMenu.menuInflater.inflate(R.menu.delete_ubdate, popupMenu.menu)
 
@@ -86,90 +89,72 @@ class TaskAdapter(getTask: ArrayList<TaskEnitiy>, Update: (TaskEnitiy) -> Unit, 
             popupMenu.show()
         })
 
-////
-//holder.binding.apply {
-//    getTask.get(position).apply {
+        holder.binding.apply {
+
+//            createNotifictionChannel()
+            notify.setOnClickListener {
+
+                var builder = NotificationCompat.Builder(context, CHANNEL_ID)
+                builder.setSmallIcon(R.drawable.baseline_notifications_none_24)
+                    .setContentTitle("Text Title")
+                    .setContentText("This is Task Notify")
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+//                with(NotificationManagerCompat.from(context)) {
+//                    if (ActivityCompat.checkSelfPermission(
+//                            context,
+//                            Manifest.permission.POST_NOTIFICATIONS
+//                        ) != PackageManager.PERMISSION_GRANTED
+//                    ) {
 //
-//    imgCheck.setOnClickListener {
-//
-//
-//        if (isChecked == false) {
-//            logobg.setCardBackgroundColor(Color.parseColor("#7CB342"))
-//
-//
-//        } else {
-//            logobg.setCardBackgroundColor(Color.parseColor("#EEF6E54F"))
-//
-//        }
-//    }
-//    }
-//
-//}
-       holder.binding.apply {
-
-           createNotifictionChannel()
-           notify.setOnClickListener {
-
-               var builder = NotificationCompat.Builder(context,CHANNEL_ID)
-               builder.setSmallIcon(R.drawable.baseline_notifications_none_24)
-                   .setContentTitle("Text Title")
-                   .setContentText("This is Task Notify")
-                   .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
-
-
-               with(NotificationManagerCompat.from(context)){
-                   if (ActivityCompat.checkSelfPermission(
-                           context,
-                           Manifest.permission.POST_NOTIFICATIONS
-                       ) != PackageManager.PERMISSION_GRANTED
-                   ) {
-
-                       return@with
-                   }
-                   notify(1,builder.build())
-               }
-
-
-
-
-           }
-
-
-
-       }
-
-    }
-
-    @SuppressLint("NewApi")
-    private fun createNotifictionChannel() {
-
-         fun getSystemService(notificationService: String) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR_0_1) {
-                val channel = NotificationChannel(
-                    CHANNEL_ID,
-                    "first channel",
-                    NotificationManager.IMPORTANCE_DEFAULT
-                )
-                channel.description = "Text Description"
-
-                val notificationManager: NotificationManager =
-                    getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-                notificationManager.createNotificationChannel(channel)
-
+//                        return@with
+//                    }
+//                    notify(1, builder.build())
             }
-
         }
 
+        holder.binding.imgCheck.setOnCheckedChangeListener { compoundButton, b ->
+            if (holder.binding.imgCheck.isChecked){
+                holder.binding.listbg.setBackgroundColor(Color.parseColor("#F0FDF4"))
+                holder.binding.logobg.setCardBackgroundColor(Color.parseColor("#16F862"))
+                holder.binding.shapebg.setBackgroundResource(R.drawable.greentodoshape)
+
+                Toast.makeText(context, "Task Completed", Toast.LENGTH_SHORT).show()
+            } else {
+                holder.binding.listbg.setBackgroundColor(Color.parseColor("#F0FAFD"))
+                holder.binding.logobg.setCardBackgroundColor(Color.parseColor("#0DCCE4"))
+                holder.binding.shapebg.setBackgroundResource(R.drawable.todoshape)
+            }
+        }
     }
+
+    @SuppressLint("NewApi", "NotifyDataSetChanged")
+//    private fun createNotifictionChannel() {
+//
+//        fun getSystemService(notificationService: String) {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR_0_1) {
+//                val channel = NotificationChannel(
+//                    CHANNEL_ID,
+//                    "first channel",
+//                    NotificationManager.IMPORTANCE_DEFAULT
+//                )
+//                channel.description = "Text Description"
+//
+//                val notificationManager: NotificationManager =
+//                    getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+//                notificationManager.createNotificationChannel(channel)
+//
+//            }
+//
+//        }
+//
+//    }
 
     fun update(l: List<TaskEnitiy>) {
         this.getTask = l as ArrayList<TaskEnitiy>
         notifyDataSetChanged()
-
     }
-
-    }
+}
 
 
 
