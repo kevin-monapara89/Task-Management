@@ -18,55 +18,6 @@ import java.util.Date
 import java.util.Locale
 
 
-//class AddTaskFragment : Fragment() {
-//
-//    lateinit var binding: FragmentAddTaskBinding
-//    lateinit var db: RoomDB
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?,
-//    ): View? {
-//        binding = FragmentAddTaskBinding.inflate(layoutInflater)
-//        db = RoomDB.init(context)
-//        AddData()
-//
-//        return binding.root
-//    }
-//
-//    private fun AddData() {
-//
-//
-//
-//        binding.btnsubmit.setOnClickListener {
-//
-//            var title = binding.edtTask.text.toString()
-//            var discription = binding.edtdescription.text.toString()
-//            var Date = binding.edtdate.text.toString()
-//            var Month = binding.edtdate.text.toString()
-//            var Year = binding.edtdate.text.toString()
-//            var hour = binding.edttime.text.toString()
-//            var minute = binding.edttime.text.toString()
-//            var format = SimpleDateFormat("dd-MM-YY hh:mm")
-//            var current = format.format(Date())
-//            var data = TaskEnitiy(title, discription, Date, Month, Year, hour, minute)
-//            db.task().AddTask(data)
-//
-//            if (title.isEmpty() || discription.isEmpty() || data.toString()
-//                    .isEmpty() || hour.toString().isEmpty()
-//            ) {
-//                Toast.makeText(context, "Please enter data", Toast.LENGTH_SHORT).show()
-//            } else {
-//                binding.edtTask.setText("")
-//                binding.edtdescription.setText("")
-//                binding.edtdate.setText("__-__-__")
-//                binding.edttime.setText("__:__")
-//            }
-//        }
-//
-//    }
-//}
-
 class AddTaskFragment : Fragment() {
     lateinit var binding: FragmentAddTaskBinding
     lateinit var db: RoomDB
@@ -86,7 +37,7 @@ class AddTaskFragment : Fragment() {
 
             var date = Date()
 
-            var format1 = SimpleDateFormat("dd-MM-YY")
+            var format1 = SimpleDateFormat("dd-MM-yy")
             var currentDate = format1.format(date)
 
             var dates = currentDate.split("-")
@@ -132,28 +83,26 @@ class AddTaskFragment : Fragment() {
         }
 
     binding.btnsubmit.setOnClickListener {
-
         var title = binding.edtTask.text.toString()
         var discription = binding.edtdescription.text.toString()
         var Date = binding.edtdate.text.toString()
-        var Month = binding.edtdate.text.toString()
+        val Month = binding.edtdate.text.toString()
         var Year = binding.edtdate.text.toString()
         var hour = binding.edttime.text.toString()
         var minute = binding.edttime.text.toString()
-        var format = SimpleDateFormat("dd-MM-YY hh:mm")
+        var format = SimpleDateFormat("dd-MM-yy hh:mm")
         var current = format.format(Date())
-        var data = TaskEnitiy(title, discription, Date, Month, Year, hour, minute)
-        db.task().AddTask(data)
 
-        if (title.isEmpty() || discription.isEmpty() || data.toString()
-                .isEmpty() || hour.toString().isEmpty()
-        ) {
+        if (title.isEmpty() || discription.isEmpty() || Date.toString().isEmpty() || Month.toString().isEmpty() || Year.toString().isEmpty() || hour.toString().isEmpty()  || minute.toString().isEmpty()) {
             Toast.makeText(context, "Please enter data", Toast.LENGTH_SHORT).show()
         } else {
             binding.edtTask.setText("")
             binding.edtdescription.setText("")
             binding.edtdate.setText("")
             binding.edttime.setText("")
+            var data = TaskEnitiy(title, discription, Date, Month, Year, hour, minute)
+            db.task().AddTask(data)
+
         }
     }
 
