@@ -15,12 +15,8 @@ import android.widget.PopupMenu
 import android.widget.TimePicker
 import androidx.annotation.RequiresApi
 import android.widget.Toast
-import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Delete
-import androidx.room.Update
 import com.kevin.taskmanagement.Adapter.TaskAdapter
 import com.kevin.taskmanagement.Database.RoomDB
 import com.kevin.taskmanagement.Enitiy.TaskEnitiy

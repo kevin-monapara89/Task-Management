@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.kevin.taskmanagement.databinding.ActivityIntroductionPageBinding
+import com.kevin.taskmanagement.databinding.ActivityLoginactivityBinding
 
 class IntroductionPage : AppCompatActivity() {
 
