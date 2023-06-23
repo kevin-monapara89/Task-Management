@@ -1,14 +1,17 @@
 package com.kevin.taskmanagement.Fragment
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.TimePickerDialog
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.TimePicker
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Delete
@@ -17,6 +20,7 @@ import com.kevin.taskmanagement.Adapter.TaskAdapter
 import com.kevin.taskmanagement.Database.RoomDB
 import com.kevin.taskmanagement.Enitiy.TaskEnitiy
 import com.kevin.taskmanagement.databinding.FragmentHomeBinding
+import com.kevin.taskmanagement.databinding.TodolistviewBinding
 import java.util.Locale
 import com.kevin.taskmanagement.databinding.UpdatedialogBinding
 import java.text.SimpleDateFormat
@@ -66,6 +70,7 @@ class HomeFragment : Fragment() {
     lateinit var adapter: TaskAdapter
     var Tasklist = ArrayList<TaskEnitiy>()
     lateinit var db: RoomDB
+    lateinit var todolistviewBinding: TodolistviewBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -81,6 +86,7 @@ class HomeFragment : Fragment() {
     }
 
 
+    @SuppressLint("NewApi")
     private fun initview() {
         var list = db.task().GetTask()
         adapter = TaskAdapter(
@@ -95,6 +101,8 @@ class HomeFragment : Fragment() {
 
 
     }
+    @SuppressLint("NewApi")
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun Update(it: TaskEnitiy) {
 
         var dialog = Dialog(requireContext())
@@ -172,6 +180,7 @@ class HomeFragment : Fragment() {
                 task.year = Year
                 task.minute = minute
 
+
                 var data = TaskEnitiy(title, text, Date, Month, Year, hour, minute)
                 db.task().UpdateTask(task)
             }
@@ -181,7 +190,11 @@ class HomeFragment : Fragment() {
         }
 
         dialog.show()
+
+
     }
+
+
 
     private fun Delete(it: Int) {
         db.task().DeleteTask(it)
