@@ -7,14 +7,10 @@ import android.widget.Toast
 import com.kevin.taskmanagement.Database.RoomDB
 import com.kevin.taskmanagement.Enitiy.TaskEnitiy
 import com.kevin.taskmanagement.R
-import com.kevin.taskmanagement.databinding.ActivityLoginactivityBinding
 import com.kevin.taskmanagement.databinding.ActivityIntroductionPageBinding
 import com.kevin.taskmanagement.databinding.ActivityLoginactivityBinding
 
 class loginactivity : AppCompatActivity() {
-
-    lateinit var binding: ActivityLoginactivityBinding
-
 
     lateinit var binding: ActivityLoginactivityBinding
     lateinit var db: RoomDB
@@ -24,23 +20,11 @@ class loginactivity : AppCompatActivity() {
         binding = ActivityLoginactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        binding.login.setOnClickListener {
-            val mainIntent = Intent(this, MainActivity::class.java)
-            startActivity(mainIntent)
-            finish()
-        }
-
         binding.register.setOnClickListener {
             val mainIntent = Intent(this, RegisterActivity::class.java)
             startActivity(mainIntent)
             finish()
         }
-
-
-        binding = ActivityLoginactivityBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
 
         initView()
     }
