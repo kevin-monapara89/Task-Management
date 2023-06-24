@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/_10sdp"
-    app:cardElevation="@dimen/_2sdp"
     android:layout_marginLeft="@dimen/_15sdp"
     android:layout_marginRight="@dimen/_15sdp"
-    android:layout_marginBottom="@dimen/_10sdp">
+    android:layout_marginBottom="@dimen/_10sdp"
+    app:cardCornerRadius="@dimen/_10sdp"
+    app:cardElevation="@dimen/_2sdp">
 
     <LinearLayout
         android:id="@+id/listbg"
@@ -22,14 +22,14 @@
             android:layout_height="@dimen/_40sdp"
             android:layout_gravity="center_vertical"
             android:layout_margin="@dimen/_10sdp"
-            app:cardCornerRadius="@dimen/_8sdp"
-            app:cardBackgroundColor="#0DCCE4">
+            app:cardBackgroundColor="#0DCCE4"
+            app:cardCornerRadius="@dimen/_8sdp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/list"
-                android:layout_margin="@dimen/_5sdp"/>
+                android:layout_margin="@dimen/_5sdp"
+                android:src="@drawable/list" />
 
         </androidx.cardview.widget.CardView>
 
@@ -118,27 +118,24 @@
 
             </LinearLayout>
 
-                <CheckBox
-                    android:id="@+id/imgCheck"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center|right"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:layout_marginRight="@dimen/_15sdp"/>
+            <CheckBox
+                android:id="@+id/imgCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginRight="@dimen/_15sdp" />
 
             <ImageView
                 android:id="@+id/notify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:onClick="show"
-                android:layout_marginLeft="@dimen/_30sdp"
-                android:src="@drawable/baseline_notifications_none_24"/>
+                android:src="@drawable/baseline_notifications_none_24" />
 
         </FrameLayout>
-
-
-
 
     </LinearLayout>
 

@@ -10,24 +10,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_190sdp"
-        android:orientation="vertical"
-        android:background="@drawable/homeshape">
+        android:background="@drawable/homeshape"
+        android:elevation="@dimen/_10sdp"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:gravity="center"
             android:text="Log In"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20sdp"
+            android:textSize="@dimen/_24sdp"
             android:textStyle="bold" />
 
         <ImageView
             android:layout_width="@dimen/_150sdp"
             android:layout_height="@dimen/_150sdp"
             android:layout_gravity="center"
-            android:src="@drawable/img"/>
+            android:src="@drawable/img" />
 
     </LinearLayout>
 
@@ -37,6 +38,14 @@
         android:layout_margin="@dimen/_15sdp"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter Your Login Details :"
+            android:textSize="@dimen/_13sdp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,8 +54,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="@dimen/_24sdp"
-                android:layout_height="@dimen/_24sdp"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:src="@drawable/user"
@@ -56,8 +65,8 @@
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_35sdp"
-                android:background="@null"
                 android:layout_marginLeft="@dimen/_10sdp"
+                android:background="@null"
                 android:hint="Username" />
 
         </LinearLayout>
@@ -66,13 +75,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
             android:background="@drawable/borderbg"
-            android:layout_marginBottom="@dimen/_30sdp"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="@dimen/_24sdp"
-                android:layout_height="@dimen/_24sdp"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:src="@drawable/padlock"
@@ -82,10 +91,10 @@
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_35sdp"
-                android:background="@null"
-                android:inputType="numberPassword"
                 android:layout_marginLeft="@dimen/_10sdp"
-                android:hint="Password" />
+                android:background="@null"
+                android:hint="Password"
+                android:inputType="numberPassword" />
 
         </LinearLayout>
 
@@ -95,7 +104,7 @@
             android:layout_margin="@dimen/_15sdp"
             app:cardBackgroundColor="#03579D"
             app:cardCornerRadius="@dimen/_15sdp"
-            app:cardElevation="@dimen/_3sdp">
+            app:cardElevation="@dimen/_7sdp">
 
             <TextView
                 android:id="@+id/login"
@@ -109,6 +118,36 @@
                 android:textStyle="bold" />
 
         </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:background="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OR"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:layout_margin="@dimen/_5sdp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:background="@color/black"/>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/register"

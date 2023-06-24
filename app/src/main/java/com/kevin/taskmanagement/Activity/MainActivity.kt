@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         replaceFragment(HomeFragment())
         binding.bottom.setOnItemSelectedListener {
-            when(it.itemId) {
+            when (it.itemId) {
                 R.id.Home -> replaceFragment(HomeFragment())
                 R.id.Add -> replaceFragment(AddTaskFragment())
 
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun replaceFragment(fragment: Fragment) {
 
-        supportFragmentManager.beginTransaction().replace(R.id.fragpageview,fragment).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.fragpageview, fragment).commit()
 
     }
 }

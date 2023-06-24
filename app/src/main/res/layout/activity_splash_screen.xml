@@ -11,24 +11,24 @@
     <ImageView
         android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_100sdp"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/logo" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="To-Do Manager"
-        android:textSize="@dimen/_18sdp"
-        android:textColor="@color/black"
         android:gravity="center"
-        android:textStyle="bold"/>
+        android:text="To-Do Manager"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_18sdp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Loading ..."
         android:layout_marginTop="@dimen/_30sdp"
-        android:textSize="@dimen/_16sdp"
+        android:gravity="center"
+        android:text="Loading ..."
         android:textColor="#00d4d4"
-        android:gravity="center"/>
+        android:textSize="@dimen/_19sdp" />
 
 </LinearLayout>

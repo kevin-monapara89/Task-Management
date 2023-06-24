@@ -92,18 +92,16 @@ class HomeFragment : Fragment() {
 //            })
 //            popupMenu.show()
 //        })
-
-
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
     fun Update(it: TaskEnitiy) {
 
         var dialog = Dialog(requireContext())
-        var b = UpdatedialogBinding.inflate(layoutInflater)
-        dialog.setContentView(b.root)
+        var bind = UpdatedialogBinding.inflate(layoutInflater)
+        dialog.setContentView(bind.root)
 
-        b.edtdate.setOnClickListener {
+        bind.edtdate.setOnClickListener {
 
             var date = Date()
 
@@ -111,7 +109,7 @@ class HomeFragment : Fragment() {
             var currentDate = format1.format(date)
 
             var dates = currentDate.split("-")
-            b.edtdate.text = currentDate
+            bind.edtdate.text = currentDate
 
             var dialog =
                 DatePickerDialog(requireContext(), object : DatePickerDialog.OnDateSetListener {
@@ -122,19 +120,19 @@ class HomeFragment : Fragment() {
                         var Date = p3
 
                         var selectedDate = "$p3-${(p2 + 1)}-$p1"
-                        b.edtdate.text = selectedDate
+                        bind.edtdate.text = selectedDate
                     }
                 }, dates[2].toInt(), dates[1].toInt() - 1, dates[0].toInt())
             dialog.show()
         }
 
-        b.edttime.setOnClickListener {
+        bind.edttime.setOnClickListener {
             var date = Date()
 
             var format2 = SimpleDateFormat("hh:mm")
             var currentTime = format2.format(date)
 
-            b.edttime.text = currentTime
+            bind.edttime.text = currentTime
             var seleTime = currentTime
             var dialog1 =
                 TimePickerDialog(context, object : TimePickerDialog.OnTimeSetListener {
@@ -144,20 +142,20 @@ class HomeFragment : Fragment() {
                         var minute = p2
                         var sdf = SimpleDateFormat("hh:mm", Locale.US)
                         var tme = "$hour:$minute "
-                        b.edttime.setText(tme)
+                        bind.edttime.setText(tme)
                     }
                 }, 10, 0, true)
             dialog1.show()
         }
 
-        b.btnsubmit.setOnClickListener {
-            var title = b.edtTask.text.toString()
-            var text = b.edtdescription.text.toString()
-            var Date = b.edtdate.text.toString()
-            var Month = b.edtdate.text.toString()
-            var Year = b.edtdate.text.toString()
-            var hour = b.edttime.text.toString()
-            var minute = b.edttime.text.toString()
+        bind.btnsubmit.setOnClickListener {
+            var title = bind.edtTask.text.toString()
+            var text = bind.edtdescription.text.toString()
+            var Date = bind.edtdate.text.toString()
+            var Month = bind.edtdate.text.toString()
+            var Year = bind.edtdate.text.toString()
+            var hour = bind.edttime.text.toString()
+            var minute = bind.edttime.text.toString()
             var format = SimpleDateFormat("dd-MM-yy hh:mm")
             var current = format.format(Date())
             var data = TaskEnitiy(title, text, Date, Month, Year, hour, minute)
@@ -176,10 +174,10 @@ class HomeFragment : Fragment() {
                 if (title.isEmpty() || text.isEmpty() || Date.isEmpty() || Month.isEmpty() || Year.isEmpty() || hour.isEmpty() || minute.isEmpty()) {
                     Toast.makeText(context, "Please enter data", Toast.LENGTH_SHORT).show()
                 } else {
-                    b.edtTask.setText("")
-                    b.edtdescription.setText("")
-                    b.edtdate.setText("")
-                    b.edttime.setText("")
+                    bind.edtTask.setText("")
+                    bind.edtdescription.setText("")
+                    bind.edtdate.setText("__-__-__")
+                    bind.edttime.setText("__:__")
                     var data = TaskEnitiy(title, text, Date, Month, Year, hour, minute)
                     db.task().UpdateTask(task)
                 }
@@ -187,8 +185,9 @@ class HomeFragment : Fragment() {
                 dialog.dismiss()
             }
         }
-            dialog.show()
+        dialog.show()
     }
+
     fun Delete(it: Int) {
         db.task().DeleteTask(it)
         adapter.update(db.task().GetTask())

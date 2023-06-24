@@ -100,8 +100,8 @@ class AddTaskFragment : Fragment() {
         } else {
             binding.edtTask.setText("")
             binding.edtdescription.setText("")
-            binding.edtdate.setText("")
-            binding.edttime.setText("")
+            binding.edtdate.setText("__-__-__")
+            binding.edttime.setText("__:__")
             var data = TaskEnitiy(
                 title,
                 discription,

@@ -90,7 +90,6 @@ class TaskAdapter(
         })
 
         holder.binding.apply {
-
 //            createNotifictionChannel()
             notify.setOnClickListener {
 
@@ -145,9 +144,7 @@ class TaskAdapter(
 //                notificationManager.createNotificationChannel(channel)
 //
 //            }
-//
 //        }
-//
 //    }
 
     fun update(l: List<TaskEnitiy>) {

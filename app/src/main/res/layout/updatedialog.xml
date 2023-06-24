@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="350dp"
+    android:layout_width="390dp"
     android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="@dimen/_300sdp"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/_15sdp"
         android:layout_margin="@dimen/_16sdp"
+        app:cardCornerRadius="@dimen/_15sdp"
         app:cardElevation="@dimen/_6sdp">
 
         <LinearLayout
@@ -126,8 +128,8 @@
                             android:layout_height="@dimen/_24sdp"
                             android:layout_gravity="center_vertical"
                             android:layout_margin="@dimen/_10sdp"
-                            app:tint="#024074"
-                            android:src="@drawable/calendar" />
+                            android:src="@drawable/calendar"
+                            app:tint="#024074" />
 
                         <TextView
                             android:id="@+id/edtdate"
@@ -171,9 +173,9 @@
                             android:layout_width="@dimen/_24sdp"
                             android:layout_height="@dimen/_24sdp"
                             android:layout_gravity="center_vertical"
-                            app:tint="#024074"
                             android:layout_margin="@dimen/_10sdp"
-                            android:src="@drawable/clock" />
+                            android:src="@drawable/clock"
+                            app:tint="#024074" />
 
                         <TextView
                             android:id="@+id/edttime"

@@ -12,10 +12,10 @@ import com.kevin.taskmanagement.Enitiy.TaskEnitiy
 interface TaskDao {
 
     @Insert
-    fun AddTask(taskEnitiy:TaskEnitiy)
+    fun AddTask(taskEnitiy: TaskEnitiy)
 
     @Query("SELECT * FROM task")
-    fun GetTask() :List<TaskEnitiy>
+    fun GetTask(): List<TaskEnitiy>
 
     @Update
     fun UpdateTask(taskEnitiy: TaskEnitiy)
