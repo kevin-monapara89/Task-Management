@@ -41,7 +41,6 @@ class TaskAdapter(
     private val CHANNEL_ID = "channelId"
     private val notificationId = 101
 
-
     class TaskHolder(itemView: TodolistviewBinding) : ViewHolder(itemView.root) {
         var binding = itemView
     }

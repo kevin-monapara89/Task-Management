@@ -14,11 +14,11 @@
         android:src="@drawable/logo" />
 
     <TextView
+        style="@style/TextColorStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="To-Do Manager"
-        android:textColor="@color/black"
         android:textSize="@dimen/_18sdp"
         android:textStyle="bold" />
 

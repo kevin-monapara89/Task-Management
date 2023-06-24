@@ -137,7 +137,6 @@ class HomeFragment : Fragment() {
             var dialog1 =
                 TimePickerDialog(context, object : TimePickerDialog.OnTimeSetListener {
                     override fun onTimeSet(p0: TimePicker?, p1: Int, p2: Int) {
-
                         var hour = p1
                         var minute = p2
                         var sdf = SimpleDateFormat("hh:mm", Locale.US)

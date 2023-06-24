@@ -13,6 +13,7 @@
         android:background="#00d4d4">
 
         <TextView
+            style="@style/TextColorStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Welcome to To-Do Manager"
@@ -71,6 +72,7 @@
             app:cardCornerRadius="@dimen/_15sdp">
 
             <TextView
+                style="@style/TextColorStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Get Start"

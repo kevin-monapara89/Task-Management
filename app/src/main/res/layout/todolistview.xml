@@ -80,7 +80,7 @@
                     <TextView
                         android:id="@+id/txtdate"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_11sdp"
                         android:gravity="center"
                         android:text="25-06-23"
                         android:textColor="@color/black"
